@@ -4,7 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Contact = () => {
   const sectionRef = useScrollReveal();
@@ -21,24 +21,46 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({
+    type: null,
+    message: "",
+  });
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
 
+  // Auto-hide toast after 10 seconds
+  useEffect(() => {
+    if (!status.type) return;
+
+    const timer = setTimeout(() => {
+      setStatus({ type: null, message: "" });
+    }, 10000); // 10 seconds
+
+    return () => clearTimeout(timer);
+  }, [status.type]);
+
   // 👉 Submit via backend API (Node + Nodemailer)
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // basic front-end guard
     if (!form.name || !form.email || !form.message) {
-      alert("Please fill in Name, Email and Project Details.");
+      setStatus({
+        type: "error",
+        message: "Please fill in Name, Email and Project Details.",
+      });
       return;
     }
 
     try {
       setIsSubmitting(true);
+      setStatus({ type: null, message: "" });
 
       const res = await fetch("http://localhost:5000/api/contact", {
         method: "POST",
@@ -57,7 +79,6 @@ const Contact = () => {
         throw new Error(data.error || "Failed to send");
       }
 
-      // clear form
       setForm({
         name: "",
         company: "",
@@ -67,10 +88,17 @@ const Contact = () => {
         message: "",
       });
 
-      alert("Thanks! Your message has been sent.");
+      setStatus({
+        type: "success",
+        message: "Thanks! Your message has been sent.",
+      });
     } catch (err) {
       console.error(err);
-      alert("Sorry, something went wrong. Please try again or contact me directly.");
+      setStatus({
+        type: "error",
+        message:
+          "Sorry, something went wrong. Please try again or contact me directly.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -97,7 +125,8 @@ const Contact = () => {
             Let&apos;s Build Together
           </h2>
           <p className="text-xl text-muted-foreground">
-            Ready to start your project? Share the details and I’ll respond quickly.
+            Ready to start your project? Share the details and I’ll respond
+            quickly.
           </p>
         </div>
 
@@ -179,14 +208,18 @@ const Contact = () => {
                 />
               </div>
 
-              <Button className="w-full" size="lg" type="submit" disabled={isSubmitting}>
+              <Button
+                className="w-full"
+                size="lg"
+                type="submit"
+                disabled={isSubmitting}
+              >
                 {isSubmitting ? "Sending..." : "Submit Request"}
               </Button>
             </form>
           </div>
 
-          {/* Contact Info */}
-                 {/* RIGHT PANEL – FULL HEIGHT */}
+          {/* RIGHT PANEL – FULL HEIGHT */}
           <div className="rounded-2xl border bg-card p-8 shadow-sm flex flex-col justify-between">
             <div className="space-y-6">
               {/* Email */}
@@ -200,7 +233,6 @@ const Contact = () => {
                     aknextgensolutions@gmail.com
                   </p>
                 </div>
-                
               </div>
 
               {/* Phone */}
@@ -229,41 +261,69 @@ const Contact = () => {
                 </div>
               </div>
 
-               <div className="mt-6 space-y-3 ml-4">
-      <h3 className="font-semibold text-sm">Why Work With Me?</h3>
+              <div className="mt-6 space-y-3 ml-4">
+                <h3 className="font-semibold text-sm">Why Work With Me?</h3>
 
-      <ul className="text-sm text-muted-foreground space-y-2">
-        <li className="flex gap-2 items-start">
-          <span className="text-primary mt-1">•</span>
-          Fast and clear communication
-        </li>
+                <ul className="text-sm text-muted-foreground space-y-2">
+                  <li className="flex gap-2 items-start">
+                    <span className="text-primary mt-1">•</span>
+                    Fast and clear communication
+                  </li>
 
-        <li className="flex gap-2 items-start">
-          <span className="text-primary mt-1">•</span>
-          High-quality engineering & scalable code
-        </li>
+                  <li className="flex gap-2 items-start">
+                    <span className="text-primary mt-1">•</span>
+                    High-quality engineering & scalable code
+                  </li>
 
-        <li className="flex gap-2 items-start">
-          <span className="text-primary mt-1">•</span>
-          Transparent development process
-        </li>
+                  <li className="flex gap-2 items-start">
+                    <span className="text-primary mt-1">•</span>
+                    Transparent development process
+                  </li>
 
-        <li className="flex gap-2 items-start">
-          <span className="text-primary mt-1">•</span>
-          On-time delivery guaranteed
-        </li>
-      </ul>
-    </div>
+                  <li className="flex gap-2 items-start">
+                    <span className="text-primary mt-1">•</span>
+                    On-time delivery guaranteed
+                  </li>
+                </ul>
+              </div>
             </div>
 
-            {/* You can add an image or message here */}
             <div className="mt-10 text-sm text-muted-foreground">
-              I usually respond within a few hours.  
+              I usually respond within a few hours.
+              <br />
               Let’s bring your idea to life.
             </div>
           </div>
         </div>
       </div>
+
+      {/* ✅ Bottom-right Toast */}
+      {status.type && (
+        <div
+          className={`
+            fixed bottom-6 right-6 z-50 max-w-sm rounded-xl border px-4 py-3 shadow-lg text-sm
+            ${
+              status.type === "success"
+                ? "border-emerald-500/40 bg-emerald-50 text-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-100"
+                : "border-red-500/40 bg-red-50 text-red-900 dark:bg-red-950/40 dark:text-red-100"
+            }
+          `}
+        >
+          <div className="flex items-start gap-3">
+            <span className="mt-0.5">
+              {status.type === "success" ? "✅" : "⚠️"}
+            </span>
+            <div className="flex-1">{status.message}</div>
+            <button
+              type="button"
+              onClick={() => setStatus({ type: null, message: "" })}
+              className="text-xs opacity-70 hover:opacity-100"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
