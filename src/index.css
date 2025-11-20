@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Deep navy futuristic background */
+    --background: 220 80% 10%;
+    --background-end: 220 65% 9%;
+    --foreground: 210 100% 95%;
+
+    /* Glass cards with slight transparency */
+    --card: 220 70% 12%;
+    --card-foreground: 210 100% 95%;
+
+    --popover: 220 70% 12%;
+    --popover-foreground: 210 100% 95%;
+
+    /* Electric cyan primary */
+    --primary: 188 100% 50%;
+    --primary-foreground: 220 80% 10%;
+
+    /* Neon purple secondary */
+    --secondary: 265 100% 68%;
+    --secondary-foreground: 220 80% 10%;
+
+    /* Muted navy tones */
+    --muted: 220 60% 15%;
+    --muted-foreground: 210 40% 70%;
+
+    /* Soft silver accent */
+    --accent: 210 100% 95%;
+    --accent-foreground: 220 80% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 100% 95%;
+
+    /* Glass borders */
+    --border: 220 60% 20%;
+    --input: 220 60% 15%;
+    --ring: 188 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Neon glow effects */
+    --glow-cyan: 188 100% 50%;
+    --glow-purple: 265 100% 68%;
+    
+    /* Gradient stops */
+    --gradient-from: 220 80% 10%;
+    --gradient-to: 220 65% 9%;
+
+    --sidebar-background: 220 70% 12%;
+    --sidebar-foreground: 210 100% 95%;
+    --sidebar-primary: 188 100% 50%;
+    --sidebar-primary-foreground: 220 80% 10%;
+    --sidebar-accent: 220 60% 15%;
+    --sidebar-accent-foreground: 210 100% 95%;
+    --sidebar-border: 220 60% 20%;
+    --sidebar-ring: 188 100% 50%;
+  }
+
+  .dark {
+    /* Deep navy futuristic background */
+    --background: 220 80% 10%;
+    --background-end: 220 65% 9%;
+    --foreground: 210 100% 95%;
+
+    /* Glass cards with slight transparency */
+    --card: 220 70% 12%;
+    --card-foreground: 210 100% 95%;
+
+    --popover: 220 70% 12%;
+    --popover-foreground: 210 100% 95%;
+
+    /* Electric cyan primary */
+    --primary: 188 100% 50%;
+    --primary-foreground: 220 80% 10%;
+
+    /* Neon purple secondary */
+    --secondary: 265 100% 68%;
+    --secondary-foreground: 220 80% 10%;
+
+    /* Muted navy tones */
+    --muted: 220 60% 15%;
+    --muted-foreground: 210 40% 70%;
+
+    /* Soft silver accent */
+    --accent: 210 100% 95%;
+    --accent-foreground: 220 80% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 100% 95%;
+
+    /* Glass borders */
+    --border: 220 60% 20%;
+    --input: 220 60% 15%;
+    --ring: 188 100% 50%;
+
+    /* Neon glow effects */
+    --glow-cyan: 188 100% 50%;
+    --glow-purple: 265 100% 68%;
+    
+    /* Gradient stops */
+    --gradient-from: 220 80% 10%;
+    --gradient-to: 220 65% 9%;
+
+    --sidebar-background: 220 70% 12%;
+    --sidebar-foreground: 210 100% 95%;
+    --sidebar-primary: 188 100% 50%;
+    --sidebar-primary-foreground: 220 80% 10%;
+    --sidebar-accent: 220 60% 15%;
+    --sidebar-accent-foreground: 210 100% 95%;
+    --sidebar-border: 220 60% 20%;
+    --sidebar-ring: 188 100% 50%;
+  }
+
+  .light {
+    /* Soft gradient background */
+    --background: 210 30% 98%;
+    --background-end: 200 40% 96%;
+    --foreground: 220 90% 15%;
+
+    /* Elevated white cards with subtle tint */
+    --card: 0 0% 100%;
+    --card-foreground: 220 90% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 90% 15%;
+
+    /* Vibrant cyan primary */
+    --primary: 188 95% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Rich purple secondary */
+    --secondary: 265 85% 58%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Subtle muted tones */
+    --muted: 210 30% 96%;
+    --muted-foreground: 220 20% 45%;
+
+    /* Light accent with tint */
+    --accent: 188 60% 95%;
+    --accent-foreground: 220 90% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Soft borders with color tint */
+    --border: 210 30% 88%;
+    --input: 210 25% 93%;
+    --ring: 188 95% 42%;
+
+    /* Softer glow effects for light mode */
+    --glow-cyan: 188 95% 42%;
+    --glow-purple: 265 85% 58%;
+    
+    /* Gradient stops with subtle color */
+    --gradient-from: 210 30% 98%;
+    --gradient-to: 200 40% 96%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 90% 15%;
+    --sidebar-primary: 188 95% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 30% 96%;
+    --sidebar-accent-foreground: 220 90% 15%;
+    --sidebar-border: 210 30% 88%;
+    --sidebar-ring: 188 95% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-[hsl(var(--gradient-from))] to-[hsl(var(--gradient-to))] text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply backdrop-blur-xl border border-border/50 rounded-[var(--radius)];
+    background: hsl(var(--card) / 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .dark .glass-card {
+    @apply bg-card/40;
+  }
+  
+  .light .glass-card {
+    background: hsl(var(--card) / 0.8);
+    box-shadow: 0 4px 20px hsl(var(--primary) / 0.08);
+  }
+  
+  .glass-card:hover {
+    @apply border-primary/50;
+    transform: translateY(-4px);
+  }
+  
+  .dark .glass-card:hover {
+    @apply bg-card/60;
+    box-shadow: 0 20px 40px hsl(var(--primary) / 0.15);
+  }
+  
+  .light .glass-card:hover {
+    background: hsl(var(--card) / 0.95);
+    box-shadow: 0 12px 40px hsl(var(--primary) / 0.15);
+  }
+  
+  .neon-border {
+    @apply border-primary/30;
+  }
+  
+  .dark .glow-cyan {
+    box-shadow: 0 0 20px hsl(var(--glow-cyan) / 0.3), 0 0 40px hsl(var(--glow-cyan) / 0.1);
+  }
+  
+  .light .glow-cyan {
+    box-shadow: 0 0 15px hsl(var(--glow-cyan) / 0.2), 0 0 30px hsl(var(--glow-cyan) / 0.08);
+  }
+  
+  .dark .glow-purple {
+    box-shadow: 0 0 20px hsl(var(--glow-purple) / 0.3), 0 0 40px hsl(var(--glow-purple) / 0.1);
+  }
+  
+  .light .glow-purple {
+    box-shadow: 0 0 15px hsl(var(--glow-purple) / 0.2), 0 0 30px hsl(var(--glow-purple) / 0.08);
+  }
+  
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .scroll-reveal.reveal-up {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--glow-cyan) / 0.3), 0 0 40px hsl(var(--glow-cyan) / 0.1);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(var(--glow-cyan) / 0.5), 0 0 60px hsl(var(--glow-cyan) / 0.2);
+    }
+  }
+  
+  .light .pulse-glow {
+    animation: pulse-glow-light 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-glow-light {
+    0%, 100% {
+      box-shadow: 0 0 15px hsl(var(--glow-cyan) / 0.2), 0 0 30px hsl(var(--glow-cyan) / 0.08);
+    }
+    50% {
+      box-shadow: 0 0 25px hsl(var(--glow-cyan) / 0.3), 0 0 45px hsl(var(--glow-cyan) / 0.12);
+    }
+  }
+  
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+                linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary))) border-box;
+    border: 2px solid transparent;
+  }
+  
+  .light .gradient-border {
+    background: linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+                linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--secondary) / 0.8)) border-box;
+  }
+}
