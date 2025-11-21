@@ -1,10 +1,11 @@
 const FloatingWhatsApp = () => {
-  const phone = "919123456789"; // replace with your number
-  const text = "Hi! I’m interested in starting a project.";
+  const phone = "9949196343";
+
+  const text = `Hi! I’m interested in starting a project. Could you please provide more information?`;
 
   const handleClick = () => {
     window.open(
-      "https://wa.me/" + phone + "?text=" + encodeURIComponent(text),
+      `https://wa.me/${phone}?text=${encodeURIComponent(text)}`,
       "_blank"
     );
   };

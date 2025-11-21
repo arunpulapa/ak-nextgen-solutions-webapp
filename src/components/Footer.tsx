@@ -50,7 +50,7 @@ const Footer = () => {
               <div className="flex gap-3 mt-5">
                 {/* GitHub */}
                 <a
-                  href="https://instagram.com/"
+                  href="https://www.instagram.com/ak_nextgen_solutions/"
                   target="_blank"
                   rel="noreferrer"
                   className="w-9 h-9 rounded-lg border border-border/50 bg-background/60 flex items-center justify-center hover:border-primary/60 hover:bg-primary/10 transition-colors"
@@ -70,18 +70,10 @@ const Footer = () => {
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                   </svg>
                 </a>
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-9 h-9 rounded-lg border border-border/50 bg-background/60 flex items-center justify-center hover:border-primary/60 hover:bg-primary/10 transition-colors"
-                >
-                  <Github size={18} />
-                </a>
-
+               
                 {/* LinkedIn */}
                 <a
-                  href="https://www.linkedin.com/company/aknextgensolutions/"
+                  href="https://www.linkedin.com/company/aknextgensolutions"
                   target="_blank"
                   rel="noreferrer"
                   className="w-9 h-9 rounded-lg border border-border/50 bg-background/60 flex items-center justify-center hover:border-primary/60 hover:bg-primary/10 transition-colors"
@@ -104,7 +96,7 @@ const Footer = () => {
 
                 {/* Gmail */}
                 <a
-                  href="mailto:aknextgensolutions@gmail.com"
+                  href="mailto:info@aknextgensolutions.com"
                   className="w-9 h-9 rounded-lg border border-border/50 bg-background/60 flex items-center justify-center hover:border-primary/60 hover:bg-primary/10 transition-colors"
                 >
                   <svg
