@@ -7,7 +7,6 @@ const Technologies = () => {
 const techList = [
   { name: "Angular", icon: "devicon-angularjs-plain colored" },
   { name: "React", icon: "devicon-react-original colored" },
-  { name: "Next.js", icon: "devicon-nextjs-original" },
   { name: "Tailwind CSS", icon: "devicon-tailwindcss-original colored" },
   { name: "TypeScript", icon: "devicon-typescript-plain colored" },
 

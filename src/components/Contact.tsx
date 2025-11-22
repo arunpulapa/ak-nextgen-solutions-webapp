@@ -230,7 +230,7 @@ const Contact = () => {
                 <div>
                   <h3 className="font-semibold mb-1">Email</h3>
                   <p className="text-sm text-muted-foreground">
-                    aknextgensolutions@gmail.com
+                    info@aknextgensolutions.com
                   </p>
                 </div>
               </div>
@@ -243,7 +243,7 @@ const Contact = () => {
                 <div>
                   <h3 className="font-semibold mb-1">Phone</h3>
                   <p className="text-sm text-muted-foreground">
-                    +91 99491 96343
+                    +91 8008012129
                   </p>
                 </div>
               </div>

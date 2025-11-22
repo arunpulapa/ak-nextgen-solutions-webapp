@@ -111,10 +111,10 @@ const TermsOfService = () => {
               <p className="text-muted-foreground mt-2">
                 Email:{" "}
                 <a
-                  href="mailto:aknextgensolutions@gmail.com"
+                  href="mailto:info@aknextgensolutions.com"
                   className="text-primary underline underline-offset-2"
                 >
-                  aknextgensolutions@gmail.com
+                  info@aknextgensolutions.com
                 </a>
               </p>
             </section>
