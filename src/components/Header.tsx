@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Home, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Link } from "react-router-dom"; // only for full pages
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
@@ -17,15 +17,6 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Sections that are on the home page
-  const sectionNavItems = ["Services", "Technologies", "Contact"];
-
-  // Separate pages
-  const pageNavItems = [
-    { label: "Portfolio", path: "/projects" },
-    { label: "About", path: "/about" },
-  ];
 
   const toggleTheme = () =>
     setTheme(theme === "dark" ? "light" : "dark");
@@ -54,35 +45,46 @@ const Header = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
-          {/* Home: go to root + #home */}
+
+          {/* Services */}
           <a
-            href="/#home"
-            className="text-muted-foreground hover:text-primary transition-colors p-2"
+            href="/#services"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
           >
-            <Home size={20} />
+            Services
           </a>
 
-          {/* Sections: still on home page */}
-          {sectionNavItems.map((item) => (
-            <a
-              key={item}
-              href={`/#${item.toLowerCase()}`}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              {item}
-            </a>
-          ))}
+          {/* About */}
+          <Link
+            to="/about"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            About
+          </Link>
 
-          {/* Separate pages: About, Projects */}
-          {pageNavItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {/* Technologies */}
+          <a
+            href="/#technologies"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            Technologies
+          </a>
+
+          {/* Portfolio */}
+          <Link
+            to="/projects"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            Portfolio
+          </Link>
+
+          {/* Contact */}
+          <a
+            href="/#contact"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
+            Contact
+          </a>
         </nav>
 
         {/* Desktop actions */}
@@ -112,39 +114,51 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden glass-card mt-4 mx-4 p-6 animate-in slide-in-from-top duration-300">
           <nav className="flex flex-col gap-4">
-            {/* Home */}
+
+            {/* Services */}
             <a
-              href="/#home"
+              href="/#services"
               onClick={closeMobileMenu}
-              className="text-muted-foreground hover:text-primary transition-colors py-2 flex items-center gap-2"
+              className="text-muted-foreground hover:text-primary transition-colors py-2"
             >
-              <Home size={20} />
-              Home
+              Services
             </a>
 
-            {/* Sections (on home page) */}
-            {sectionNavItems.map((item) => (
-              <a
-                key={item}
-                href={`/#${item.toLowerCase()}`}
-                onClick={closeMobileMenu}
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-              >
-                {item}
-              </a>
-            ))}
+            {/* About */}
+            <Link
+              to="/about"
+              onClick={closeMobileMenu}
+              className="text-muted-foreground hover:text-primary transition-colors py-2"
+            >
+              About
+            </Link>
 
-            {/* Separate pages */}
-            {pageNavItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={closeMobileMenu}
-                className="text-muted-foreground hover:text-primary transition-colors py-2"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {/* Technologies */}
+            <a
+              href="/#technologies"
+              onClick={closeMobileMenu}
+              className="text-muted-foreground hover:text-primary transition-colors py-2"
+            >
+              Technologies
+            </a>
+
+            {/* Portfolio */}
+            <Link
+              to="/projects"
+              onClick={closeMobileMenu}
+              className="text-muted-foreground hover:text-primary transition-colors py-2"
+            >
+              Portfolio
+            </Link>
+
+            {/* Contact */}
+            <a
+              href="/#contact"
+              onClick={closeMobileMenu}
+              className="text-muted-foreground hover:text-primary transition-colors py-2"
+            >
+              Contact
+            </a>
 
             <button
               onClick={() => {

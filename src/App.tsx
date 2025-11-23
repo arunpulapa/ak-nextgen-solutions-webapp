@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";       // ✅ new
 import Projects from "./pages/Projects"; // ✅ new
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsAndConditions from "./components/TermsAndConditions";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
 
             {/* catch-all */}
             <Route path="*" element={<NotFound />} />
